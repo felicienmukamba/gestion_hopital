@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Commandes</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'commande-add' %}">Ajouter une Commande</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Consultation</th>
+                <th>Utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.date }}</td>
+                <td>{{ commande.consultation }}</td>
+                <td>{{ commande.user }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'commande-detail' commande.pk %}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'commande-edit' commande.pk %}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'commande-delete' commande.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

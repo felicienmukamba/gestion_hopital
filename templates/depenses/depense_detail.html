@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de la Dépense{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails de la Dépense</h1>
+    <p><strong>Motif:</strong> {{ depense.motif }}</p>
+    <p><strong>Montant:</strong> {{ depense.montant }}</p>
+    <p><strong>Date:</strong> {{ depense.date }}</p>
+    <p><strong>Utilisateur:</strong> {{ depense.user }}</p>
+    <a class="btn btn-primary" href="{% url 'depense-edit' depense.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'depense-delete' depense.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'depense-list' %}">Retour à la liste</a>
+</div>
+{% endblock %}

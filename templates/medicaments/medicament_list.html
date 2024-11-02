@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Medicaments{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Medicaments</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Emballage</th>
+                <th>Unité</th>
+                <th>Nombre par emballage</th>
+                <th>Capacité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicament in medicaments %}
+            <tr>
+                <td>{{ medicament.libelle }}</td>
+                <td>{{ medicament.emballage }}</td>
+                <td>{{ medicament.unite }}</td>
+                <td>{{ medicament.nbre_par_emballage }}</td>
+                <td>{{ medicament.capacite }}</td>
+                <td>
+                    <a href="{% url 'medicament-detail' medicament.pk %}">Détails</a> |
+                    <a href="{% url 'medicament-edit' medicament.pk %}">Modifier</a> |
+                    <a href="{% url 'medicament-delete' medicament.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'medicament-add' %}" class="btn btn-primary">Ajouter un medicament</a>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer la Ligne Commande{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Supprimer la Ligne Commande</h1>
+    <p>Êtes-vous sûr de vouloir supprimer cette ligne commande ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a class="btn btn-secondary" href="{% url 'ligne_commande-detail' ligne_commande.pk %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Prescriptions Lunettes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Prescriptions Lunettes</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'prescription_lunette-add' %}">Ajouter une Prescription Lunette</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vision</th>
+                <th>SPH</th>
+                <th>SYL</th>
+                <th>Axe</th>
+                <th>Oeil</th>
+                <th>Consultation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prescription in prescriptions_lunettes %}
+            <tr>
+                <td>{{ prescription.vision }}</td>
+                <td>{{ prescription.SPH }}</td>
+                <td>{{ prescription.SYL }}</td>
+                <td>{{ prescription.axe }}</td>
+                <td>{{ prescription.oeil }}</td>
+                <td>{{ prescription.consultation }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'prescription_lunette-detail' prescription.pk %}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'prescription_lunette-edit' prescription.pk %}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'prescription_lunette-delete' prescription.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

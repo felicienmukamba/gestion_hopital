@@ -1,0 +1,165 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Tableau de Bord</h1>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3 card-equal">
+                <div class="card-header">Patients</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Patients</h5>
+                    <p class="card-text">{{ patients.count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3 card-equal">
+                <div class="card-header">Traitements</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Traitements <span class="badge badge-primary">{{ traitements.count }}</span></h5>
+                    <p class="card-text">Prix Moyen <span class="badge badge-primary">{{ traitements.price_mean }}$</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-danger mb-3 card-equal">
+                <div class="card-header">Consultations</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Consultations</h5>
+                    <p class="card-text">{{ consultations.count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3 card-equal">
+                <div class="card-header">Commandes</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Commandes</h5>
+                    <p class="card-text">{{ commandes.count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3 card-equal">
+                <div class="card-header">Lunettes</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Lunettes</h5>
+                    <p class="card-text">{{ lunettes.count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-secondary mb-3 card-equal">
+                <div class="card-header">Plaintes</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Plaintes</h5>
+                    <p class="card-text">{{ plaintes.count }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card text-white bg-secondary mb-3 card-equal">
+                <div class="card-header">Produits</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total produits</h5>
+                    <p class="card-text">{{ produits.count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-dark mb-3 card-equal">
+                <div class="card-header">Médicaments</div>
+                <div class="card-body">
+                    <h5 class="card-title">Total Médicaments</h5>
+                    <p class="card-text">{{ medicaments.count }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Add more statistic cards as needed -->
+    </div>
+
+    <!-- Patients Table -->
+    <h2 class="mt-5">Patients</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Postnom</th>
+                    <th>Prénom</th>
+                    <th>Sexe</th>
+                    <th>Date de naissance</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients.objects %}
+                <tr>
+                    <td>{{ patient.nom }}</td>
+                    <td>{{ patient.postnom }}</td>
+                    <td>{{ patient.prenom }}</td>
+                    <td>{{ patient.sexe }}</td>
+                    <td>{{ patient.date_naissance }}</td>
+                    <td>{{ patient.telephone }}</td>
+                    <td>{{ patient.adresse_complete }}</td>
+                    <td>
+                        <!-- Include actions (e.g., view, edit, delete) -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Traitements Table -->
+    <h2 class="mt-5">Traitements</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Libellé</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for traitement in traitements.objects %}
+                <tr>
+                    <td>{{ traitement.libelle }}</td>
+                    <td>{{ traitement.prix }}</td>
+                    <td>
+                        <!-- Include actions (e.g., view, edit, delete) -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+<style>
+    .card-equal {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .card-equal .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+</style>

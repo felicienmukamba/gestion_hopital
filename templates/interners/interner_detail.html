@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de l'Interner{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails de l'Interner</h1>
+    <p><strong>Patient:</strong> {{ interner.patient }}</p>
+    <p><strong>Chambre:</strong> {{ interner.chambre }}</p>
+    <p><strong>Maladie:</strong> {{ interner.maladie }}</p>
+    <p><strong>Date d'entrée:</strong> {{ interner.date_entree }}</p>
+    <p><strong>Date de sortie:</strong> {{ interner.date_sortie }}</p>
+    <a class="btn btn-primary" href="{% url 'interner-edit' interner.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'interner-delete' interner.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'interner-list' %}">Retour à la liste</a>
+</div>
+{% endblock %}

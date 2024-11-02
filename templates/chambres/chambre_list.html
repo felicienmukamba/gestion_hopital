@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Chambres{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Chambres</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'chambre-add' %}">Ajouter une Chambre</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Désignation</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chambre in chambres %}
+            <tr>
+                <td>{{ chambre.designation }}</td>
+                <td>{{ chambre.prix }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'chambre-detail' chambre.pk %}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'chambre-edit' chambre.pk %}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'chambre-delete' chambre.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

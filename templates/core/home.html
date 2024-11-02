@@ -1,0 +1,66 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <section id="services" class="my-5">
+        <h2>Nos Services</h2>
+        <div class="row">
+            <div class="col-md-6 service">
+                <h3>Service 1</h3>
+                <p>Description du service 1.</p>
+            </div>
+            <div class="col-md-6 service">
+                <h3>Service 2</h3>
+                <p>Description du service 2.</p>
+            </div>
+            <!-- Ajouter d'autres services si nécessaire -->
+        </div>
+    </section>
+
+    <section id="services" class="my-5">
+        <h2>Qui Nous Sommes</h2>
+        <p>Nous sommes une équipe de professionnels dévoués...</p>
+    </section>
+
+    <section id="services" class="my-5">
+        <h2>Notre Équipe</h2>
+        <div class="row">
+            <div class="col-md-6 team-member">
+                <h3>Membre de l'équipe 1</h3>
+                <p>Rôle du membre de l'équipe 1.</p>
+            </div>
+            <div class="col-md-6 team-member">
+                <h3>Membre de l'équipe 2</h3>
+                <p>Rôle du membre de l'équipe 2.</p>
+            </div>
+            <!-- Ajouter d'autres membres de l'équipe si nécessaire -->
+        </div>
+    </section>
+
+    <section id="services" class="my-5">
+        <h2>Contactez-nous</h2>
+        <p>Email: contact@ourcompany.com</p>
+        <p>Téléphone: +123 456 7890</p>
+        <p>Adresse: 123 Health St, Wellness City</p>
+    </section>
+</div>
+{% endblock %}
+
+
+<style>
+    .container {
+    margin-top: 20px;
+}
+
+#services, #about, #team, #contact {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.service, .team-member {
+    margin-bottom: 20px;
+}
+
+</style>

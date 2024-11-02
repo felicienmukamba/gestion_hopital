@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Détails du Soignant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails du Soignant</h1>
+    <p><strong>Nom:</strong> {{ soignant.noms }}</p>
+    <p><strong>Sexe:</strong> {{ soignant.sexe }}</p>
+    <p><strong>Grade Médical:</strong> {{ soignant.grade_med }}</p>
+    <a class="btn btn-primary" href="{% url 'soignant-edit' soignant.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'soignant-delete' soignant.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'soignant-list' %}">Retour à la liste</a>
+</div>
+{% endblock %}

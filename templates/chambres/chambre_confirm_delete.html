@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer la Chambre{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Supprimer la Chambre</h1>
+    <p>Êtes-vous sûr de vouloir supprimer cette chambre ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a class="btn btn-secondary" href="{% url 'chambre-detail' chambre.pk %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

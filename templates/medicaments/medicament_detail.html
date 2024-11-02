@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Medicament Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Medicament Details</h1>
+    <p><strong>Libellé:</strong> {{ medicament.libelle }}</p>
+    <p><strong>Emballage:</strong> {{ medicament.emballage }}</p>
+    <p><strong>Unité:</strong> {{ medicament.unite }}</p>
+    <p><strong>Nombre par emballage:</strong> {{ medicament.nbre_par_emballage }}</p>
+    <p><strong>Capacité:</strong> {{ medicament.capacite }}</p>
+    <a href="{% url 'medicament-edit' medicament.pk %}" class="btn btn-primary">Modifier</a>
+    <a href="{% url 'medicament-delete' medicament.pk %}" class="btn btn-danger">Supprimer</a>
+    <a href="{% url 'medicament-list' %}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}

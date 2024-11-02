@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de la Consommation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails de la Consommation</h1>
+    <p><strong>Patient:</strong> {{ consommer.patient }}</p>
+    <p><strong>Médicament:</strong> {{ consommer.medicament }}</p>
+    <p><strong>Quantité:</strong> {{ consommer.quantite }}</p>
+    <p><strong>Date:</strong> {{ consommer.date }}</p>
+    <a class="btn btn-primary" href="{% url 'consommer-edit' consommer.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'consommer-delete' consommer.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'consommer-list' %}">Retour à la liste</a>
+</div>
+{% endblock %}

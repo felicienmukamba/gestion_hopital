@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de la Plainte{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Détails de la Plainte</h1>
+    <p><strong>Contenu:</strong> {{ plainte.contenu }}</p>
+    <p><strong>Consultation:</strong> {{ plainte.consultation }}</p>
+    <p><strong>Utilisateur:</strong> {{ plainte.user }}</p>
+    <a class="btn btn-primary" href="{% url 'plainte-edit' plainte.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'plainte-delete' plainte.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'plainte-list' %}">Retour à la liste</a>
+</div>
+{% endblock %}

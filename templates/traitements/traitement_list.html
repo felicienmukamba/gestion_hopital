@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Traitements{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Traitements</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'traitement-add' %}">Ajouter un Traitement</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for traitement in traitements %}
+            <tr>
+                <td>{{ traitement.libelle }}</td>
+                <td>{{ traitement.prix }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'traitement-detail' traitement.pk %}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'traitement-edit' traitement.pk %}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'traitement-delete' traitement.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter/Modifier une Dépense{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} une Dépense</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %}</button>
+        <a class="btn btn-secondary" href="{% url 'depense-list' %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

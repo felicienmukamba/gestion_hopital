@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Plaintes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Plaintes</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'plainte-add' %}">Ajouter une Plainte</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Contenu</th>
+                <th>Consultation</th>
+                <th>Utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for plainte in plaintes %}
+            <tr>
+                <td>{{ plainte.contenu }}</td>
+                <td>{{ plainte.consultation }}</td>
+                <td>{{ plainte.user }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'plainte-detail' plainte.pk %}">Détails</a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'plainte-edit' plainte.pk %}">Modifier</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'plainte-delete' plainte.pk %}">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

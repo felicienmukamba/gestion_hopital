@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer le Soignant{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Supprimer le Soignant</h1>
+    <p>Êtes-vous sûr de vouloir supprimer ce soignant ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a class="btn btn-secondary" href="{% url 'soignant-detail' soignant.pk %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

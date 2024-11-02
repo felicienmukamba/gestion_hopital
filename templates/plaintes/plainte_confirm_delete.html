@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Supprimer la Plainte{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Supprimer la Plainte</h1>
+    <p>Êtes-vous sûr de vouloir supprimer cette plainte ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a class="btn btn-secondary" href="{% url 'plainte-detail' plainte.pk %}">Annuler</a>
+    </form>
+</div>
+{% endblock %}

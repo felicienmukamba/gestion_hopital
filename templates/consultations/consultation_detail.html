@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Détails de la Consultation{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Détails de la Consultation</h2>
+    <p><strong>Patient:</strong> {{ consultation.patient }}</p>
+    <p><strong>Soignant:</strong> {{ consultation.soignant }}</p>
+    <p><strong>Date:</strong> {{ consultation.date }}</p>
+    <a href="{% url 'consultation-edit' consultation.pk %}" class="btn btn-warning">Modifier</a>
+    <a href="{% url 'consultation-delete' consultation.pk %}" class="btn btn-danger">Supprimer</a>
+    <a href="{% url 'consultation-list' %}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+{% endblock %}
