@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Supprimer le Bénéficier{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Supprimer le Bénéficier</h1>
     <p>Êtes-vous sûr de vouloir supprimer ce bénéficier ?</p>
@@ -11,5 +12,8 @@
         <button type="submit" class="btn btn-danger">Supprimer</button>
         <a class="btn btn-secondary" href="{% url 'beneficier-detail' beneficier.pk %}">Annuler</a>
     </form>
+</div>
+
+  </div>
 </div>
 {% endblock %}

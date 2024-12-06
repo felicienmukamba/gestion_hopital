@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+    <h1>Liste des Factures</h1>
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Patient</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for facture in factures %}
+        <tr>
+          <td>{{ facture.id }}</td>
+          <td>{{ facture.patient }}</td>
+          <td>{{ facture.date }}</td>
+          <td>{{ facture.total }}</td>
+          <td>
+            <a href="{% url 'facture_detail' facture.id %}" class="btn btn-primary btn-sm">Voir</a>
+            <a href="{% url 'generate_invoice_pdf' facture.id %}" class="btn btn-success btn-sm">Télécharger PDF</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

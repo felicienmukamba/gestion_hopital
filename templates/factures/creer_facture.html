@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+    <h1>Créer une nouvelle facture</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ facture_form.as_p }}
+        {{ ligne_form.as_p }}
+        <button class="btn btn-success" type="submit">Créer</button>
+    </form>
+</div>
+</div>
+{% endblock %}

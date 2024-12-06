@@ -62,6 +62,7 @@ class Consultation(models.Model):
 
     def total_cost(self):
         lignes_commandes = self.commande_set.all()
+        
         return sum(item.quantite * item.produit.prix for item in lignes_commandes)
 
 class Commande(models.Model):
@@ -131,10 +132,12 @@ class PrescriptionMedicale(models.Model):
         return self.mode_emploi
 
 class Produit(models.Model):
+    libelle = models.CharField(max_length=50)
     prix = models.FloatField()
 
     def __str__(self):
-        return f"Produit - {self.prix}"
+        return self.libelle
+
 
 class GradeMed(models.Model):
     libelle = models.CharField(max_length=50)
@@ -191,5 +194,36 @@ class Depense(models.Model):
 
     def __str__(self):
         return f"{self.motif} - {self.montant}"
+    
 
 
+
+
+
+
+
+
+
+
+from django.db import models
+from django.contrib.auth import get_user_model
+
+class Facture(models.Model):
+    date = models.DateField(auto_now_add=True)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    total = models.FloatField()
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f"Facture {self.id} - {self.patient}"
+
+class LigneFacture(models.Model):
+    facture = models.ForeignKey(Facture, on_delete=models.CASCADE)
+    produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
+    quantite = models.IntegerField()
+
+    def __str__(self):
+        return f"Ligne Facture {self.id} - {self.produit}"
+
+    def total_cost(self):
+        return self.quantite * self.produit.prix

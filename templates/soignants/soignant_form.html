@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Ajouter/Modifier un Soignant{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un Soignant</h1>
     <form method="post">
@@ -11,5 +12,8 @@
         <button type="submit" class="btn btn-success">{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %}</button>
         <a class="btn btn-secondary" href="{% url 'soignant-list' %}">Annuler</a>
     </form>
+</div>
+
+  </div>
 </div>
 {% endblock %}

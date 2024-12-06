@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Interners{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Interners</h1>
     <a class="btn btn-primary mb-3" href="{% url 'interner-add' %}">Ajouter un Interner</a>
@@ -26,13 +27,16 @@
                 <td>{{ interner.date_entree }}</td>
                 <td>{{ interner.date_sortie }}</td>
                 <td>
-                    <a class="btn btn-info btn-sm" href="{% url 'interner-detail' interner.pk %}">Détails</a>
-                    <a class="btn btn-warning btn-sm" href="{% url 'interner-edit' interner.pk %}">Modifier</a>
-                    <a class="btn btn-danger btn-sm" href="{% url 'interner-delete' interner.pk %}">Supprimer</a>
+                    <a class="btn btn-info btn-sm" href="{% url 'interner-detail' interner.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'interner-edit' interner.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'interner-delete' interner.pk %}"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+
+  </div>
 </div>
 {% endblock %}

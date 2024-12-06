@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de la Chambre{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de la Chambre</h1>
     <p><strong>Désignation:</strong> {{ chambre.designation }}</p>
@@ -10,5 +11,8 @@
     <a class="btn btn-primary" href="{% url 'chambre-edit' chambre.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'chambre-delete' chambre.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'chambre-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

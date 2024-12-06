@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails du Grade Médical{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails du Grade Médical</h1>
     <p><strong>Libellé:</strong> {{ grade_med.libelle }}</p>
@@ -10,5 +11,8 @@
     <a class="btn btn-primary" href="{% url 'grade_med-edit' grade_med.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'grade_med-delete' grade_med.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'grade_med-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

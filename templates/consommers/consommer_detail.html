@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de la Consommation{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de la Consommation</h1>
     <p><strong>Patient:</strong> {{ consommer.patient }}</p>
@@ -12,5 +13,8 @@
     <a class="btn btn-primary" href="{% url 'consommer-edit' consommer.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'consommer-delete' consommer.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'consommer-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails du Traitement{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails du Traitement</h1>
     <p><strong>Libellé:</strong> {{ traitement.libelle }}</p>
@@ -10,5 +11,8 @@
     <a class="btn btn-primary" href="{% url 'traitement-edit' traitement.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'traitement-delete' traitement.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'traitement-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

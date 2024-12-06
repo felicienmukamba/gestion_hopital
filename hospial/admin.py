@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import (
     Patient, Traitement, Beneficier, Chambre, Consultation, Commande, LigneCommande, 
     Medicament, Plainte, Lunette, PrescriptionLunette, PrescriptionMedicale, Produit, 
-    GradeMed, Soignant, Interner, Consommer, Depense
+    GradeMed, Soignant, Interner, Consommer, Depense, Facture, LigneFacture
 )
 
 
@@ -109,3 +109,23 @@ admin.site.register(Soignant, SoignantAdmin)
 admin.site.register(Interner, InternerAdmin)
 admin.site.register(Consommer, ConsommerAdmin)
 admin.site.register(Depense, DepenseAdmin)
+
+
+
+from django.contrib import admin
+from .models import Facture, LigneFacture
+
+@admin.register(Facture)
+class FactureAdmin(admin.ModelAdmin):
+    list_display = ('id', 'date', 'patient', 'total', 'user')
+    search_fields = ('patient__nom', 'patient__postnom', 'patient__prenom', 'user__username')
+    list_filter = ('date', 'patient')
+    date_hierarchy = 'date'
+    ordering = ('-date',)
+
+@admin.register(LigneFacture)
+class LigneFactureAdmin(admin.ModelAdmin):
+    list_display = ('id', 'facture', 'produit', 'quantite', 'total_cost')
+    search_fields = ('facture__id', 'produit__libelle')
+    list_filter = ('facture', 'produit')
+    ordering = ('facture',)

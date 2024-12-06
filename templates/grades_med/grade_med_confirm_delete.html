@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Supprimer le Grade Médical{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Supprimer le Grade Médical</h1>
     <p>Êtes-vous sûr de vouloir supprimer ce grade médical ?</p>
@@ -11,5 +12,8 @@
         <button type="submit" class="btn btn-danger">Supprimer</button>
         <a class="btn btn-secondary" href="{% url 'grade_med-detail' grade_med.pk %}">Annuler</a>
     </form>
+</div>
+
+  </div>
 </div>
 {% endblock %}

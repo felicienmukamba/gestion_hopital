@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de la Prescription Médicale{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de la Prescription Médicale</h1>
     <p><strong>Mode d'emploi:</strong> {{ prescription_medicale.mode_emploi }}</p>
@@ -12,5 +13,8 @@
     <a class="btn btn-primary" href="{% url 'prescription_medicale-edit' prescription_medicale.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'prescription_medicale-delete' prescription_medicale.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'prescription_medicale-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

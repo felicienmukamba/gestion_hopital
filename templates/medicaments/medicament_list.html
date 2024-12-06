@@ -1,10 +1,12 @@
-{% extends "base.html" %}
-
-{% block title %}Medicaments{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Medicaments</h1>
+    <a href="{% url 'medicament-add' %}" class="btn btn-primary">Ajouter un medicament</a>
     <table class="table">
         <thead>
             <tr>
@@ -25,14 +27,17 @@
                 <td>{{ medicament.nbre_par_emballage }}</td>
                 <td>{{ medicament.capacite }}</td>
                 <td>
-                    <a href="{% url 'medicament-detail' medicament.pk %}">Détails</a> |
-                    <a href="{% url 'medicament-edit' medicament.pk %}">Modifier</a> |
-                    <a href="{% url 'medicament-delete' medicament.pk %}">Supprimer</a>
+                    <a href="{% url 'medicament-detail' medicament.pk %}"><i class="fas fa-info-circle"></i></a> |
+                    <a href="{% url 'medicament-edit' medicament.pk %}"><i class="fas fa-edit"></i></a> |
+                    <a href="{% url 'medicament-delete' medicament.pk %}"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'medicament-add' %}" class="btn btn-primary">Ajouter un medicament</a>
+    
+</div>
+
+  </div>
 </div>
 {% endblock %}

@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Dépenses{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Dépenses</h1>
     <a class="btn btn-primary mb-3" href="{% url 'depense-add' %}">Ajouter une Dépense</a>
@@ -24,13 +25,16 @@
                 <td>{{ depense.date }}</td>
                 <td>{{ depense.user }}</td>
                 <td>
-                    <a class="btn btn-info btn-sm" href="{% url 'depense-detail' depense.pk %}">Détails</a>
-                    <a class="btn btn-warning btn-sm" href="{% url 'depense-edit' depense.pk %}">Modifier</a>
-                    <a class="btn btn-danger btn-sm" href="{% url 'depense-delete' depense.pk %}">Supprimer</a>
+                    <a class="btn btn-info btn-sm" href="{% url 'depense-detail' depense.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'depense-edit' depense.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'depense-delete' depense.pk %}"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+
+  </div>
 </div>
 {% endblock %}

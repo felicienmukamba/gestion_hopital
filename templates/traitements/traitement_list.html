@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Traitements{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Traitements</h1>
     <a class="btn btn-primary mb-3" href="{% url 'traitement-add' %}">Ajouter un Traitement</a>
@@ -20,13 +21,16 @@
                 <td>{{ traitement.libelle }}</td>
                 <td>{{ traitement.prix }}</td>
                 <td>
-                    <a class="btn btn-info btn-sm" href="{% url 'traitement-detail' traitement.pk %}">Détails</a>
-                    <a class="btn btn-warning btn-sm" href="{% url 'traitement-edit' traitement.pk %}">Modifier</a>
-                    <a class="btn btn-danger btn-sm" href="{% url 'traitement-delete' traitement.pk %}">Supprimer</a>
+                    <a class="btn btn-info btn-sm" href="{% url 'traitement-detail' traitement.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'traitement-edit' traitement.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'traitement-delete' traitement.pk %}"><i class="fas fa-trash"></i></a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+
+  </div>
 </div>
 {% endblock %}

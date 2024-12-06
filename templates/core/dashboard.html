@@ -1,16 +1,19 @@
-{% extends "base_generic.html" %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1 class="mb-4">Tableau de Bord</h1>
 
     <!-- Statistics Cards -->
     <div class="row mb-4">
         <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3 card-equal">
+            <div class="card text-white bg-dark  mb-3 card-equal">
                 <div class="card-header">Patients</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Patients</h5>
+                    <h5 class="card-title text-white">Total Patients</h5>
                     <p class="card-text">{{ patients.count }}</p>
                 </div>
             </div>
@@ -19,7 +22,7 @@
             <div class="card text-white bg-success mb-3 card-equal">
                 <div class="card-header">Traitements</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Traitements <span class="badge badge-primary">{{ traitements.count }}</span></h5>
+                    <h5 class="card-title text-white">Total Traitements <span class="badge badge-primary">{{ traitements.count }}</span></h5>
                     <p class="card-text">Prix Moyen <span class="badge badge-primary">{{ traitements.price_mean }}$</span></p>
                 </div>
             </div>
@@ -28,7 +31,7 @@
             <div class="card text-white bg-danger mb-3 card-equal">
                 <div class="card-header">Consultations</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Consultations</h5>
+                    <h5 class="card-title text-white">Total Consultations</h5>
                     <p class="card-text">{{ consultations.count }}</p>
                 </div>
             </div>
@@ -37,7 +40,7 @@
             <div class="card text-white bg-warning mb-3 card-equal">
                 <div class="card-header">Commandes</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Commandes</h5>
+                    <h5 class="card-title text-white">Total Commandes</h5>
                     <p class="card-text">{{ commandes.count }}</p>
                 </div>
             </div>
@@ -46,7 +49,7 @@
             <div class="card text-white bg-info mb-3 card-equal">
                 <div class="card-header">Lunettes</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Lunettes</h5>
+                    <h5 class="card-title text-white">Total Lunettes</h5>
                     <p class="card-text">{{ lunettes.count }}</p>
                 </div>
             </div>
@@ -55,7 +58,7 @@
             <div class="card text-white bg-secondary mb-3 card-equal">
                 <div class="card-header">Plaintes</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Plaintes</h5>
+                    <h5 class="card-title text-white">Total Plaintes</h5>
                     <p class="card-text">{{ plaintes.count }}</p>
                 </div>
             </div>
@@ -65,7 +68,7 @@
             <div class="card text-white bg-secondary mb-3 card-equal">
                 <div class="card-header">Produits</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total produits</h5>
+                    <h5 class="card-title text-white">Total produits</h5>
                     <p class="card-text">{{ produits.count }}</p>
                 </div>
             </div>
@@ -74,7 +77,7 @@
             <div class="card text-white bg-dark mb-3 card-equal">
                 <div class="card-header">Médicaments</div>
                 <div class="card-body">
-                    <h5 class="card-title">Total Médicaments</h5>
+                    <h5 class="card-title text-white">Total Médicaments</h5>
                     <p class="card-text">{{ medicaments.count }}</p>
                 </div>
             </div>
@@ -141,6 +144,9 @@
             </tbody>
         </table>
     </div>
+</div>
+
+  </div>
 </div>
 {% endblock %}
 

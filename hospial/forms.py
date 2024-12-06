@@ -89,7 +89,7 @@ class PrescriptionMedicaleForm(BootstrapFormMixin, forms.ModelForm):
 class ProduitForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Produit
-        fields = ['prix']
+        fields = ['prix', "libelle"]
 
 class GradeMedForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
@@ -127,3 +127,20 @@ class DepenseForm(BootstrapFormMixin, forms.ModelForm):
         widgets = {
             'date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+
+
+
+
+from django import forms
+from .models import Facture, LigneFacture
+
+class FactureForm(BootstrapFormMixin, forms.ModelForm):
+    class Meta:
+        model = Facture
+        fields = ['patient']
+
+class LigneFactureForm(BootstrapFormMixin, forms.ModelForm):
+    class Meta:
+        model = LigneFacture
+        fields = ['produit', 'quantite']

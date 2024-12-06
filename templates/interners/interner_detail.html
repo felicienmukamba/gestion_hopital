@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de l'Interner{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de l'Interner</h1>
     <p><strong>Patient:</strong> {{ interner.patient }}</p>
@@ -13,5 +14,8 @@
     <a class="btn btn-primary" href="{% url 'interner-edit' interner.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'interner-delete' interner.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'interner-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

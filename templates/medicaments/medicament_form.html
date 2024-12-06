@@ -1,10 +1,16 @@
-{% extends "base.html" %}
-{% block title %}Add/Edit Medicament{% endblock %}
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <h2>{% if medicament %}Edit{% else %}Add{% endif %} Medicament</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">{% if medicament %}Update{% else %}Add{% endif %}</button>
 </form>
+
+  </div>
+</div>
 {% endblock %}

@@ -1,18 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
 from django.views import View
 from .forms import SignUpForm
-
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.views import View
+from django.contrib.auth import logout
 from .forms import SignUpForm
+from .forms import ProfileForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class SignUpView(View):
     def get(self, request):
         form = SignUpForm()
-        return render(request, 'registration/signup.html', {'form': form})
+        return render(request, 'users/signup.html', {'form': form})
 
     def post(self, request):
         form = SignUpForm(request.POST)
@@ -26,24 +24,19 @@ class SignUpView(View):
             user = authenticate(username=username, password=password)
             login(request, user)
             return redirect('home')
-        return render(request, 'registration/signup.html', {'form': form})
+        return render(request, 'users/signup.html', {'form': form})
 
-from django.shortcuts import render, redirect
-from django.views import View
-from .models import Profile
-from .forms import ProfileForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         profile = request.user.profile
-        return render(request, 'app/profile.html', {'profile': profile})
+        return render(request, 'users/profile.html', {'profile': profile})
 
 class ProfileUpdateView(LoginRequiredMixin, View):
     def get(self, request):
         profile = request.user.profile
         form = ProfileForm(instance=profile)
-        return render(request, 'app/profile_form.html', {'form': form})
+        return render(request, 'users/profile_form.html', {'form': form})
 
     def post(self, request):
         profile = request.user.profile
@@ -51,4 +44,9 @@ class ProfileUpdateView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             return redirect('profile')
-        return render(request, 'app/profile_form.html', {'form': form})
+        return render(request, 'users/profile_form.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request) 
+    return  redirect('login')

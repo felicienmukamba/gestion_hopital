@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de la Prescription Lunette{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de la Prescription Lunette</h1>
     <p><strong>Vision:</strong> {{ prescription.vision }}</p>
@@ -14,5 +15,8 @@
     <a class="btn btn-primary" href="{% url 'prescription_lunette-edit' prescription.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'prescription_lunette-delete' prescription.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'prescription_lunette-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

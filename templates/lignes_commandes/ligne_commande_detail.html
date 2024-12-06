@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Détails de la Ligne Commande{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Détails de la Ligne Commande</h1>
     <p><strong>Produit:</strong> {{ ligne_commande.produit }}</p>
@@ -11,5 +12,8 @@
     <a class="btn btn-primary" href="{% url 'ligne_commande-edit' ligne_commande.pk %}">Modifier</a>
     <a class="btn btn-danger" href="{% url 'ligne_commande-delete' ligne_commande.pk %}">Supprimer</a>
     <a class="btn btn-secondary" href="{% url 'ligne_commande-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
 </div>
 {% endblock %}

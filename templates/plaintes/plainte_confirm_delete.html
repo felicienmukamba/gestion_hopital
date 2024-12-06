@@ -1,8 +1,9 @@
-{% extends "base.html" %}
-
-{% block title %}Supprimer la Plainte{% endblock %}
-
+{% extends 'base.html' %}
 {% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
 <div class="container">
     <h1>Supprimer la Plainte</h1>
     <p>Êtes-vous sûr de vouloir supprimer cette plainte ?</p>
@@ -11,5 +12,8 @@
         <button type="submit" class="btn btn-danger">Supprimer</button>
         <a class="btn btn-secondary" href="{% url 'plainte-detail' plainte.pk %}">Annuler</a>
     </form>
+</div>
+
+  </div>
 </div>
 {% endblock %}
