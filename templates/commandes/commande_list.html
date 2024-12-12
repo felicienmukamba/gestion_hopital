@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Commandes</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'commande-add' %}">Ajouter une Commande</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Consultation</th>
+                <th>Utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.date }}</td>
+                <td>{{ commande.consultation }}</td>
+                <td>{{ commande.user }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'commande-detail' commande.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'commande-edit' commande.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'commande-delete' commande.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}

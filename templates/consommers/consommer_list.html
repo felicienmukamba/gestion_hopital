@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Consommations</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'consommer-add' %}">Ajouter une Consommation</a>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Médicament</th>
+                    <th>Quantité</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for consommer in consommations %}
+                <tr>
+                    <td>{{ consommer.patient }}</td>
+                    <td>{{ consommer.medicament }}</td>
+                    <td>{{ consommer.quantite }}</td>
+                    <td>{{ consommer.date }}</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="{% url 'consommer-detail' consommer.pk %}"><i class="fas fa-info-circle"></i></a>
+                        <a class="btn btn-warning btn-sm" href="{% url 'consommer-edit' consommer.pk %}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'consommer-delete' consommer.pk %}"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+  </div>
+</div>
+{% endblock %}

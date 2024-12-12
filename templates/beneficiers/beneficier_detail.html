@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Détails du Bénéficier</h1>
+    <p><strong>Date:</strong> {{ beneficier.date }}</p>
+    <p><strong>Patient:</strong> {{ beneficier.patient }}</p>
+    <p><strong>Traitement:</strong> {{ beneficier.traitement }}</p>
+    <p><strong>Utilisateur:</strong> {{ beneficier.user }}</p>
+    <a class="btn btn-primary" href="{% url 'beneficier-edit' beneficier.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'beneficier-delete' beneficier.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'beneficier-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
+</div>
+{% endblock %}

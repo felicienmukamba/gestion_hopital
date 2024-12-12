@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h2>Consultations</h2>
+    <a href="{% url 'consultation-add' %}" class="btn btn-primary mb-3">Ajouter une Consultation</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Patient</th>
+                <th>Soignant</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for consultation in consultations %}
+            <tr>
+                <td>{{ consultation.patient }}</td>
+                <td>{{ consultation.soignant }}</td>
+                <td>{{ consultation.date }}</td>
+                <td>
+                    <a href="{% url 'consultation-detail' consultation.pk %}" class="btn btn-info btn-sm"><i class="fas fa-info-circle"></i></a>
+                    <a href="{% url 'consultation-edit' consultation.pk %}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'consultation-delete' consultation.pk %}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}

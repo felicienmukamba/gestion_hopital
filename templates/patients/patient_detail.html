@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Détails du Patient</h1>
+    <table class="table">
+        <tr>
+            <th>Nom</th>
+            <td>{{ patient.nom }}</td>
+        </tr>
+        <tr>
+            <th>Postnom</th>
+            <td>{{ patient.postnom }}</td>
+        </tr>
+        <tr>
+            <th>Prénom</th>
+            <td>{{ patient.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Sexe</th>
+            <td>{{ patient.sexe }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance</th>
+            <td>{{ patient.date_naissance }}</td>
+        </tr>
+        <tr>
+            <th>Téléphone</th>
+            <td>{{ patient.telephone }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ patient.adresse_complete }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'patient-edit' patient.pk %}" class="btn btn-warning">Modifier</a>
+    <a href="{% url 'patient-delete' patient.pk %}" class="btn btn-danger">Supprimer</a>
+    <a href="{% url 'creer_facture' patient.pk %}" class="btn btn-success">Créer Facture</a>
+    <a href="{% url 'patient-list' %}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+  </div>
+</div>
+{% endblock %}

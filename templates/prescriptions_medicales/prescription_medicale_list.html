@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Prescriptions Médicales</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'prescription_medicale-add' %}">Ajouter une Prescription Médicale</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Mode d'emploi</th>
+                <th>Médicament</th>
+                <th>Consultation</th>
+                <th>Utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prescription in prescriptions %}
+            <tr>
+                <td>{{ prescription.mode_emploi }}</td>
+                <td>{{ prescription.medicament }}</td>
+                <td>{{ prescription.consultation }}</td>
+                <td>{{ prescription.user }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'prescription_medicale-detail' prescription.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'prescription_medicale-edit' prescription.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'prescription_medicale-delete' prescription.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}

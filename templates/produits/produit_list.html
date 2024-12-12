@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Produits</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'produit-add' %}">Ajouter un Produit</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prix</th>
+                <th>libelle</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produits %}
+            <tr>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.libelle }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'produit-detail' produit.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'produit-edit' produit.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'produit-delete' produit.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}

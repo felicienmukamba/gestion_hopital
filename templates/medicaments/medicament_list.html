@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Medicaments</h1>
+    <a href="{% url 'medicament-add' %}" class="btn btn-primary">Ajouter un medicament</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Emballage</th>
+                <th>Unité</th>
+                <th>Nombre par emballage</th>
+                <th>Capacité</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for medicament in medicaments %}
+            <tr>
+                <td>{{ medicament.libelle }}</td>
+                <td>{{ medicament.emballage }}</td>
+                <td>{{ medicament.unite }}</td>
+                <td>{{ medicament.nbre_par_emballage }}</td>
+                <td>{{ medicament.capacite }}</td>
+                <td>
+                    <a href="{% url 'medicament-detail' medicament.pk %}"><i class="fas fa-info-circle"></i></a> |
+                    <a href="{% url 'medicament-edit' medicament.pk %}"><i class="fas fa-edit"></i></a> |
+                    <a href="{% url 'medicament-delete' medicament.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Supprimer l'Interner</h1>
+    <p>Êtes-vous sûr de vouloir supprimer cet interner ?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        <a class="btn btn-secondary" href="{% url 'interner-detail' interner.pk %}">Annuler</a>
+    </form>
+</div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Grades Médicaux</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'grade_med-add' %}">Ajouter un Grade Médical</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Libellé</th>
+                <th>Prix de Consultation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grade_med in grades_med %}
+            <tr>
+                <td>{{ grade_med.libelle }}</td>
+                <td>{{ grade_med.prix_consult }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'grade_med-detail' grade_med.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'grade_med-edit' grade_med.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'grade_med-delete' grade_med.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}

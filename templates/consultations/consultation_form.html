@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}{{ form.instance.pk|yesno:"Modifier une Consultation,Ajouter une Consultation" }}{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h2>{{ form.instance.pk|yesno:"Modifier une Consultation,Ajouter une Consultation" }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">{{ form.instance.pk|yesno:"Enregistrer les modifications,Ajouter la Consultation" }}</button>
+    </form>
+    <a href="{% url 'consultation-list' %}" class="btn btn-secondary">Retour à la liste</a>
+</div>
+
+  </div>
+</div>
+{% endblock %}

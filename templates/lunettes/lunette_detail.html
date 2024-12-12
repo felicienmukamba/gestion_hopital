@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Détails de la Lunette</h1>
+    <p><strong>Modèle:</strong> {{ lunette.modele }}</p>
+    <a class="btn btn-primary" href="{% url 'lunette-edit' lunette.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'lunette-delete' lunette.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'lunette-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
+</div>
+{% endblock %}

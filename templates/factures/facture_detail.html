@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <div class="page-inner">
+    <div class="card">
+      <div class="card-header">
+        <h2>Facture N° {{ facture.id }}</h2>
+      </div>
+      <div class="card-body">
+        <p><b>Date :</b> {{ facture.date }}</p>
+        <p><b>Patient :</b> {{ facture.patient }}</p>
+        <p><b>Total :</b> {{ facture.total }}</p>
+        <a href="{% url 'generate_invoice_pdf' facture.id %}" class="btn btn-success">Télécharger PDF</a>
+        <a href="{% url 'delete_facture' facture.id %}" class="btn btn-danger">Supprimer Facture</a>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <h3>Détails des Consommables</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Quantité</th>
+              <th>Désignation</th>
+              <th>PU</th>
+              <th>PT</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for ligne in lignes_facture %}
+            <tr>
+              <td>{{ ligne.quantite }}</td>
+              <td>{{ ligne.produit.libelle }}</td>
+              <td>{{ ligne.produit.prix }}</td>
+              <td>{{ ligne.total_cost }}</td>
+              <td>
+                <a href="{% url 'delete_ligne_facture' ligne.id %}" class="btn btn-danger">Supprimer</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <h3>Consultations</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Soignant</th>
+              <th>Coût Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for consultation in consultations %}
+            <tr>
+              <td>{{ consultation.id }}</td>
+              <td>{{ consultation.soignant.noms }}</td>
+              <td>{{ consultation.total_cost }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <h3>Internements</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Chambre</th>
+              <th>Date d'entrée</th>
+              <th>Coût Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for internement in internements %}
+            <tr>
+              <td>{{ internement.chambre.designation }}</td>
+              <td>{{ internement.date_entree }}</td>
+              <td>{{ internement.total_cost }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <h3>Consommations de Médicaments</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Médicament</th>
+              <th>Quantité</th>
+              <th>Coût Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for consommation in consommations %}
+            <tr>
+              <td>{{ consommation.medicament.libelle }}</td>
+              <td>{{ consommation.quantite }}</td>
+              <td>{{ consommation.total_cost }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

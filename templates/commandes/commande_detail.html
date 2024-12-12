@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Détails de la Commande</h1>
+    <p><strong>Date:</strong> {{ commande.date }}</p>
+    <p><strong>Consultation:</strong> {{ commande.consultation }}</p>
+    <p><strong>Utilisateur:</strong> {{ commande.user }}</p>
+    <a class="btn btn-primary" href="{% url 'commande-edit' commande.pk %}">Modifier</a>
+    <a class="btn btn-danger" href="{% url 'commande-delete' commande.pk %}">Supprimer</a>
+    <a class="btn btn-secondary" href="{% url 'commande-list' %}">Retour à la liste</a>
+</div>
+
+  </div>
+</div>
+{% endblock %}

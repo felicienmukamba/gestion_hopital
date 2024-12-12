@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+  <div class="page-inner">
+<div class="container">
+    <h1>Lignes Commandes</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'ligne_commande-add' %}">Ajouter une Ligne Commande</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Commande</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ligne_commande in lignes_commandes %}
+            <tr>
+                <td>{{ ligne_commande.produit }}</td>
+                <td>{{ ligne_commande.quantite }}</td>
+                <td>{{ ligne_commande.commande }}</td>
+                <td>
+                    <a class="btn btn-info btn-sm" href="{% url 'ligne_commande-detail' ligne_commande.pk %}"><i class="fas fa-info-circle"></i></a>
+                    <a class="btn btn-warning btn-sm" href="{% url 'ligne_commande-edit' ligne_commande.pk %}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'ligne_commande-delete' ligne_commande.pk %}"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+  </div>
+</div>
+{% endblock %}
