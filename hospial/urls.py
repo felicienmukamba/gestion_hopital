@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import creer_facture, facture_detail, facture_list, generate_invoice_pdf
+from .views import creer_facture, delete_facture, delete_ligne_facture, facture_detail, facture_list, generate_invoice_pdf
 from .views import (
     MedicamentCreateView, MedicamentDeleteView, MedicamentDetailView, MedicamentListView, MedicamentUpdateView, PatientListView, PatientDetailView, PatientCreateView, PatientUpdateView, PatientDeleteView,
     ConsultationListView, ConsultationDetailView, ConsultationCreateView, ConsultationUpdateView, ConsultationDeleteView,
@@ -72,7 +72,6 @@ urlpatterns = [
     path('commandes/<int:pk>/delete/', CommandeDeleteView.as_view(), name='commande-delete'),
 
 
-
     path('plaintes/', PlainteListView.as_view(), name='plainte-list'),
     path('plaintes/<int:pk>/', PlainteDetailView.as_view(), name='plainte-detail'),
     path('plaintes/add/', PlainteCreateView.as_view(), name='plainte-add'),
@@ -141,5 +140,7 @@ urlpatterns = [
     path('facture/<int:facture_id>/', facture_detail, name='facture_detail'),
     path('facture-à-imprimer/<int:invoice_id>/pdf/', generate_invoice_pdf, name='generate_invoice_pdf'),
     path('factures/', facture_list, name='facture_list'),
+    path('facture/supprimer/<int:facture_id>/', delete_facture, name='delete_facture'),
+    path('ligne_facture/supprimer/<int:ligne_facture_id>/', delete_ligne_facture, name='delete_ligne_facture')
 
 ]

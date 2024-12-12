@@ -2,13 +2,11 @@ from django.db import models
 from django.db.models import Sum
 from django.contrib.auth import get_user_model
 
-
 class Patient(models.Model):
     nom = models.CharField(max_length=50)
     postnom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50, null=True, blank=True)
-    sexe = models.CharField(max_length=1, choices=[
-                            ('M', 'Male'), ('F', 'Female')])
+    sexe = models.CharField(max_length=1, choices=[('M', 'Male'), ('F', 'Female')])
     date_naissance = models.DateField()
     telephone = models.CharField(max_length=13)
     adresse_complete = models.CharField(max_length=100)
@@ -30,7 +28,6 @@ class Patient(models.Model):
     def total_spent(self):
         return self.depense_set.aggregate(total=Sum('montant'))['total'] or 0
 
-
 class Traitement(models.Model):
     libelle = models.CharField(max_length=50)
     prix = models.FloatField()
@@ -38,17 +35,14 @@ class Traitement(models.Model):
     def __str__(self):
         return self.libelle
 
-
 class Beneficier(models.Model):
     date = models.DateField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     traitement = models.ForeignKey(Traitement, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.patient} - {self.traitement}"
-
 
 class Chambre(models.Model):
     designation = models.CharField(max_length=50)
@@ -61,34 +55,33 @@ class Consultation(models.Model):
     date = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     soignant = models.ForeignKey('Soignant', on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Consultation - {self.date} - {self.patient}"
 
     def total_cost(self):
         lignes_commandes = self.commande_set.all()
-
+        
         return sum(item.quantite * item.produit.prix for item in lignes_commandes)
-
 
 class Commande(models.Model):
     date = models.DateField()
     consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Commande - {self.consultation} - {self.date}"
 
+    def total_cost(self):
+        lignes_commandes = self.lignescommande_set.all()
+        return sum(item.quantite * item.produit.prix for item in lignes_commandes)
 
 class LigneCommande(models.Model):
     quantite = models.IntegerField()
     produit = models.ForeignKey('Produit', on_delete=models.CASCADE)
-    commande = models.ForeignKey(Commande, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    commande = models.ForeignKey(Commande, related_name='lignescommande', on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Ligne Commande - {self.produit} - {self.quantite}"
@@ -107,16 +100,13 @@ class Medicament(models.Model):
     def __str__(self):
         return self.libelle
 
-
 class Plainte(models.Model):
     contenu = models.CharField(max_length=255)
     consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.contenu
-
 
 class Lunette(models.Model):
     modele = models.CharField(max_length=50)
@@ -126,31 +116,25 @@ class Lunette(models.Model):
 
 
 class PrescriptionLunette(models.Model):
-    vision = models.CharField(max_length=4, choices=[
-                              ('Loin', 'Loin'), ('Près', 'Près')])
+    vision = models.CharField(max_length=4, choices=[('Loin', 'Loin'), ('Près', 'Près')])
     SPH = models.CharField(max_length=50)
     SYL = models.CharField(max_length=50)
     axe = models.CharField(max_length=50)
-    oeil = models.CharField(max_length=6, choices=[
-                            ('Gauche', 'Gauche'), ('Droit', 'Droit')])
+    oeil = models.CharField(max_length=6, choices=[('Gauche', 'Gauche'), ('Droit', 'Droit')])
     consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Prescription Lunette - {self.vision} - {self.oeil}"
-
 
 class PrescriptionMedicale(models.Model):
     mode_emploi = models.CharField(max_length=50)
     medicament = models.ForeignKey(Medicament, on_delete=models.CASCADE)
     consultation = models.ForeignKey(Consultation, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.mode_emploi
-
 
 class Produit(models.Model):
     libelle = models.CharField(max_length=50)
@@ -170,13 +154,11 @@ class GradeMed(models.Model):
 
 class Soignant(models.Model):
     noms = models.CharField(max_length=100)
-    sexe = models.CharField(max_length=1, choices=[
-                            ('M', 'Male'), ('F', 'Female')])
+    sexe = models.CharField(max_length=1, choices=[('M', 'Male'), ('F', 'Female')])
     grade_med = models.ForeignKey('GradeMed', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.noms
-
 
 class Interner(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
@@ -186,8 +168,7 @@ class Interner(models.Model):
     date_sortie = models.DateField(null=True, blank=True)
     diagnostic_sorti = models.CharField(max_length=255, null=True, blank=True)
     caution = models.FloatField(default=0)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Internement - {self.patient} - {self.maladie}"
@@ -200,18 +181,15 @@ class Interner(models.Model):
             days_in_hospital = (date.today() - self.date_entree).days
         return days_in_hospital * self.chambre.prix
 
-
 class Consommer(models.Model):
     quantite = models.IntegerField()
     date = models.DateField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     medicament = models.ForeignKey('Medicament', on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.patient} - {self.medicament}"
-
 
 class Depense(models.Model):
     motif = models.CharField(max_length=100)
@@ -221,18 +199,28 @@ class Depense(models.Model):
 
     def __str__(self):
         return f"{self.motif} - {self.montant}"
+    
 
+
+
+
+
+
+
+
+
+
+from django.db import models
+from django.contrib.auth import get_user_model
 
 class Facture(models.Model):
     date = models.DateField(auto_now_add=True)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     total = models.FloatField()
-    user = models.ForeignKey(
-        get_user_model(), on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"Facture {self.id} - {self.patient}"
-
 
 class LigneFacture(models.Model):
     facture = models.ForeignKey(Facture, on_delete=models.CASCADE)

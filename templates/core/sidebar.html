@@ -6,118 +6,124 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner mt-1">
         <div class="sidebar-content">
             <ul class="nav nav-secondary">
-                <li class="nav-item {% if request.resolver_match.url_name == 'dashboard' %} active{% endif%}{% if request.resolver_match.url_name == 'dashboard' %} active{% endif%} ">
-                    <a  href="{% url 'dashboard' %}">
-                    <i class="fas fa-tachometer-alt"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'dashboard' %} active{% endif%} ">
+                    <a href="{% url 'dashboard' %}">
+                        <i class="fas fa-tachometer-alt" aria-hidden="true"></i> 
                         <p>Tableau de bord</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'patient-list' %} active{% endif%}{% if request.resolver_match.url_name == 'patient-list' %} active{% endif%} ">
-                    <a  href="{% url 'patient-list' %}">
-                    <i class="fas fa-users"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'patient-list' %} active{% endif%} ">
+                    <a href="{% url 'patient-list' %}">
+                        <i class="fas fa-users" aria-hidden="true"></i> 
                         <p>Gestion Patients</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'consultation-list' %} active{% endif%}{% if request.resolver_match.url_name == 'consultation-list' %} active{% endif%} ">
-                    <a  href="{% url 'consultation-list' %}">
-                    <i class="fas fa-stethoscope"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'consultation-list' %} active{% endif%} ">
+                    <a href="{% url 'consultation-list' %}">
+                        <i class="fas fa-stethoscope" aria-hidden="true"></i> 
                         <p>Gestion consultations</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'commande-list' %} active{% endif%}{% if request.resolver_match.url_name == 'commande-list' %} active{% endif%} ">
-                    <a  href="{% url 'commande-list' %}">
-                    <i class="fas fa-shopping-cart"  aria-hidden="true"></i> 
+                <!-- <li class="nav-item {% if request.resolver_match.url_name == 'commande-list' %} active{% endif%} ">
+                    <a href="{% url 'commande-list' %}">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i> 
                         <p>Gestion Commandes</p> 
                     </a>
-                </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'produit-list' %} active{% endif%}{% if request.resolver_match.url_name == 'produit-list' %} active{% endif%} ">
-                    <a  href="{% url 'produit-list' %}">
-                    <i class="fas fa-box"  aria-hidden="true"></i> 
+                </li>  -->
+                <!-- <li class="nav-item {% if request.resolver_match.url_name == 'ligne_commande-list' %} active{% endif%} ">
+                    <a href="{% url 'ligne_commande-list' %}">
+                        <i class="fas fa-list" aria-hidden="true"></i> 
+                        <p>Gestion Lignes Commandes</p> 
+                    </a>
+                </li>  -->
+                <li class="nav-item {% if request.resolver_match.url_name == 'produit-list' %} active{% endif%} ">
+                    <a href="{% url 'produit-list' %}">
+                        <i class="fas fa-box" aria-hidden="true"></i> 
                         <p>Gestion Produits</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'chambre-list' %} active{% endif%}{% if request.resolver_match.url_name == 'chambre-list' %} active{% endif%} ">
-                    <a  href="{% url 'chambre-list' %}">
-                    <i class="fas fa-home"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'chambre-list' %} active{% endif%} ">
+                    <a href="{% url 'chambre-list' %}">
+                        <i class="fas fa-home" aria-hidden="true"></i> 
                         <p>Gestion chambre</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'medicament-list' %} active{% endif%}{% if request.resolver_match.url_name == 'medicament-list' %} active{% endif%} ">
-                    <a  href="{% url 'medicament-list' %}">
-                    <i class="fas fa-pills"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'medicament-list' %} active{% endif%} ">
+                    <a href="{% url 'medicament-list' %}">
+                        <i class="fas fa-pills" aria-hidden="true"></i> 
                         <p>Gestion medicament</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'traitement-list' %} active{% endif%}{% if request.resolver_match.url_name == 'traitement-list' %} active{% endif%} ">
-                    <a  href="{% url 'traitement-list' %}">
-                    <i class="fas fa-briefcase-medical"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'traitement-list' %} active{% endif%} ">
+                    <a href="{% url 'traitement-list' %}">
+                        <i class="fas fa-briefcase-medical" aria-hidden="true"></i> 
                         <p>Gestion traitement</p> 
                     </a>
                 </li> 
-                <li class="nav-item {% if request.resolver_match.url_name == 'plainte-list' %} active{% endif%}{% if request.resolver_match.url_name == 'plainte-list' %} active{% endif%} ">
-                    <a  href="{% url 'plainte-list' %}">
-                    <i class="fas fa-exclamation-circle"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'plainte-list' %} active{% endif%} ">
+                    <a href="{% url 'plainte-list' %}">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i> 
                         <p>Gestion plaintes</p> 
                     </a>
                 </li> 
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'lunette-list' %} active{% endif%}{% if request.resolver_match.url_name == 'lunette-list' %} active{% endif%} ">
-                    <a  href="{% url 'lunette-list' %}">
-                    <i class="fas fa-glasses"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'lunette-list' %} active{% endif%} ">
+                    <a href="{% url 'lunette-list' %}">
+                        <i class="fas fa-glasses" aria-hidden="true"></i> 
                         <p>Gestion lunette</p> 
                     </a>
                 </li>
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'prescription_lunette-list' %} active{% endif%}{% if request.resolver_match.url_name == 'prescription_lunette-list' %} active{% endif%} ">
-                    <a  href="{% url 'prescription_lunette-list' %}">
-                    <i class="fas fa-prescription"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'prescription_lunette-list' %} active{% endif%} ">
+                    <a href="{% url 'prescription_lunette-list' %}">
+                        <i class="fas fa-prescription" aria-hidden="true"></i> 
                         <p>Prescription lunette</p> 
                     </a>
                 </li>
-                <li class="nav-item {% if request.resolver_match.url_name == 'prescription_medicale-list' %} active{% endif%}{% if request.resolver_match.url_name == 'prescription_medicale-list' %} active{% endif%} ">
-                    <a  href="{% url 'prescription_medicale-list' %}">
-                    <i class="fas fa-notes-medical"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'prescription_medicale-list' %} active{% endif%} ">
+                    <a href="{% url 'prescription_medicale-list' %}">
+                        <i class="fas fa-notes-medical" aria-hidden="true"></i> 
                         <p>Prescription medicale</p> 
                     </a>
                 </li>
-                <li class="nav-item {% if request.resolver_match.url_name == 'grade_med-list' %} active{% endif%}{% if request.resolver_match.url_name == 'grade_med-list' %} active{% endif%} ">
-                    <a  href="{% url 'grade_med-list' %}">
-                    <i class="fas fa-user-md"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'grade_med-list' %} active{% endif%} ">
+                    <a href="{% url 'grade_med-list' %}">
+                        <i class="fas fa-user-md" aria-hidden="true"></i> 
                         <p>Gestion grade_med</p> 
                     </a>
                 </li>
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'soignant-list' %} active{% endif%}{% if request.resolver_match.url_name == 'soignant-list' %} active{% endif%} ">
-                    <a  href="{% url 'soignant-list' %}">
-                    <i class="fas fa-user"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'soignant-list' %} active{% endif%} ">
+                    <a href="{% url 'soignant-list' %}">
+                        <i class="fas fa-user" aria-hidden="true"></i> 
                         <p>Gestion soignant</p> 
                     </a>
                 </li>
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'interner-list' %} active{% endif%}{% if request.resolver_match.url_name == 'interner-list' %} active{% endif%} ">
-                    <a  href="{% url 'interner-list' %}">
-                    <i class="fas fa-procedures"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'interner-list' %} active{% endif%} ">
+                    <a href="{% url 'interner-list' %}">
+                        <i class="fas fa-procedures" aria-hidden="true"></i> 
                         <p>Gestion interner</p> 
                     </a>
                 </li>
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'consommer-list' %} active{% endif%}{% if request.resolver_match.url_name == 'consommer-list' %} active{% endif%} ">
-                    <a  href="{% url 'consommer-list' %}">
-                    <i class="fas fa-utensils"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'consommer-list' %} active{% endif%} ">
+                    <a href="{% url 'consommer-list' %}">
+                        <i class="fas fa-utensils" aria-hidden="true"></i> 
                         <p>Gestion consommer</p> 
                     </a>
                 </li>
                 
-                <li class="nav-item {% if request.resolver_match.url_name == 'depense-list' %} active{% endif%}{% if request.resolver_match.url_name == 'depense-list' %} active{% endif%} ">
-                    <a  href="{% url 'depense-list' %}">
-                    <i class="fas fa-money-bill-wave"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'depense-list' %} active{% endif%} ">
+                    <a href="{% url 'depense-list' %}">
+                        <i class="fas fa-money-bill-wave" aria-hidden="true"></i> 
                         <p>Gestion depense</p> 
                     </a>
                 </li>
 
-                <li class="nav-item {% if request.resolver_match.url_name == 'facture_list' %} active{% endif%}{% if request.resolver_match.url_name == 'facture_list' %} active{% endif%} ">
-                    <a  href="{% url 'facture_list' %}">
-                    <i class="fas fa-file-invoice"  aria-hidden="true"></i> 
+                <li class="nav-item {% if request.resolver_match.url_name == 'facture_list' %} active{% endif%} ">
+                    <a href="{% url 'facture_list' %}">
+                        <i class="fas fa-file-invoice" aria-hidden="true"></i> 
                         <p>Gestion des Factures</p> 
                     </a>
                 </li>
@@ -126,6 +132,4 @@
            </div>
        </div>
    </div>
-   
-   
-   <!-- End Sidebar -->
+<!-- End Sidebar -->

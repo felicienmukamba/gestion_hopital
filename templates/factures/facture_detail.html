@@ -11,6 +11,7 @@
         <p><b>Patient :</b> {{ facture.patient }}</p>
         <p><b>Total :</b> {{ facture.total }}</p>
         <a href="{% url 'generate_invoice_pdf' facture.id %}" class="btn btn-success">Télécharger PDF</a>
+        <a href="{% url 'delete_facture' facture.id %}" class="btn btn-danger">Supprimer Facture</a>
       </div>
     </div>
 
@@ -26,6 +27,7 @@
               <th>Désignation</th>
               <th>PU</th>
               <th>PT</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -35,6 +37,9 @@
               <td>{{ ligne.produit.libelle }}</td>
               <td>{{ ligne.produit.prix }}</td>
               <td>{{ ligne.total_cost }}</td>
+              <td>
+                <a href="{% url 'delete_ligne_facture' ligne.id %}" class="btn btn-danger">Supprimer</a>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
@@ -119,7 +124,6 @@
         </table>
       </div>
     </div>
-
   </div>
 </div>
 {% endblock %}
